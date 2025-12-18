@@ -87,7 +87,7 @@ function Projects() {
               {/* Button pinned to bottom */}
               <div className="mt-auto">
                 <a
-                  href="https://github.com/AcharyaRam/your-portfolio-repo"
+                  href="https://github.com/AcharyaRam/portfolio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-4 py-2 border border-black rounded-md
