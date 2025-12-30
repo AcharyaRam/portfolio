@@ -1,6 +1,19 @@
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        glass: "rgba(255,255,255,0.08)",
+        glassBorder: "rgba(255,255,255,0.15)",
+      },
+      backdropBlur: {
+        xs: "2px",
+      },
+    },
   },
+  plugins: [],
 };
