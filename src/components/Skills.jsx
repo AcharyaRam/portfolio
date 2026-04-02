@@ -1,57 +1,94 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Reveal from "./Reveal";
 
 const categories = [
   {
     id: "frontend",
     label: "Frontend",
-    description: "Modern UI, responsive layouts, and clean UX.",
+    description: "UI engineering and responsive UX that feels premium.",
     skills: [
-      { name: "React UI", level: 92, description: "Component-driven development with clean state patterns and accessible markup." },
-      { name: "JavaScript (ES6+)", level: 90, description: "Readable async flows, robust front-end logic, and modern language features." },
-      { name: "HTML5 & CSS3", level: 88, description: "Typography-first design, spacing systems, and pixel-accurate styling." },
-      { name: "Responsive UX", level: 86, description: "Mobile-first layouts with consistent alignment and performance-conscious UI." },
+      {
+        name: "React",
+        description:
+          "I use it to build reusable component systems and deliver responsive UIs with clean state patterns.",
+      },
+      {
+        name: "JavaScript (ES6+)",
+        description:
+          "I use it to implement reliable UI logic, async flows, and integrations in a readable, maintainable way.",
+      },
+      {
+        name: "HTML5 & CSS3",
+        description:
+          "I use it to create structured layouts, strong typography hierarchy, and consistent spacing across screens.",
+      },
+      {
+        name: "Responsive Design",
+        description:
+          "I use it to ensure the UI stays clear and usable on mobile, tablet, and desktop with a mobile-first approach.",
+      },
     ],
   },
   {
-    id: "mern",
-    label: "MERN Backend",
-    description: "Node/Express APIs and MongoDB data flows.",
+    id: "backend",
+    label: "Backend",
+    description: "Structured APIs and real-world application logic.",
     skills: [
-      { name: "Node.js", level: 86, description: "API logic with practical structure and maintainable routes/services." },
-      { name: "Express.js", level: 84, description: "Middleware-driven request handling and clear endpoint design." },
-      { name: "MongoDB & Mongoose", level: 82, description: "Schema design, modeling, and query patterns for real app data." },
-      { name: "REST API Development", level: 88, description: "Predictable endpoints with integration-ready responses." },
-      { name: "Role-based Access", level: 80, description: "Authentication/authorization patterns with role management where needed." },
+      {
+        name: "ASP.NET Core",
+        description:
+          "I use it to build structured backend systems and secure APIs for real-world modules like inventory and billing.",
+      },
+      {
+        name: "C#",
+        description:
+          "I use it to write clean business logic and keep backend systems maintainable as features grow.",
+      },
+      {
+        name: "Entity Framework",
+        description:
+          "I use it for database access and CRUD workflows while keeping data integrity consistent across modules.",
+      },
+      {
+        name: "Node.js + Express.js",
+        description:
+          "I use it to build REST APIs and connect frontend flows to backend services in full-stack projects like Fixit.",
+      },
+      {
+        name: "Authentication",
+        description:
+          "I use it to protect routes and implement role-based access (Admin/Staff) where needed in production workflows.",
+      },
     ],
   },
   {
-    id: "dotnet",
-    label: ".NET Backend",
-    description: "ASP.NET Core, EF, and SQL Server apps.",
+    id: "database",
+    label: "Database",
+    description: "Practical data storage and query fundamentals.",
     skills: [
-      { name: "ASP.NET Core", level: 88, description: "Building full-stack web modules with a structured architecture." },
-      { name: "C#", level: 87, description: "Reliable business logic and clean code organization." },
-      { name: "Entity Framework", level: 84, description: "Data access patterns and database management via EF." },
-      { name: "SQL Server", level: 83, description: "Storing and querying transactional application data." },
-      { name: "MySQL (optional)", level: 74, description: "Database versatility for projects where it fits the requirements." },
+      {
+        name: "SQL Server",
+        description:
+          "I use it to store and query transactional application data for systems like Pulse Pharma.",
+      },
+      {
+        name: "MongoDB",
+        description:
+          "I use it for flexible data models in MERN projects, especially when iterating quickly on features.",
+      },
+      {
+        name: "MySQL",
+        description:
+          "I use it when a relational database fits the project’s needs and schema is well-defined.",
+      },
     ],
   },
 ];
 
 export default function Skills() {
   const [activeCat, setActiveCat] = useState(categories[0].id);
-  const [selected, setSelected] = useState(categories[0].skills[0].name);
 
   const cat = useMemo(() => categories.find((c) => c.id === activeCat) ?? categories[0], [activeCat]);
-
-  useEffect(() => {
-    const first = cat.skills[0]?.name;
-    if (first) setSelected(first);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCat]);
-
-  const selectedSkill = cat.skills.find((s) => s.name === selected) ?? cat.skills[0];
 
   return (
     <section id="skills" className="py-24 px-6">
@@ -63,10 +100,10 @@ export default function Skills() {
                 Skills & Tech Stack
               </p>
               <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
-                Built for modern teams
+                Skills, explained through usage
               </h2>
               <p className="mt-4 text-[color:var(--muted)] leading-relaxed text-lg">
-                An interactive stack view that answers the question recruiters care about: what can you build, end-to-end?
+                No ratings. No progress bars. Just the tools I use and how I apply them in real projects.
               </p>
             </Reveal>
           </div>
@@ -75,7 +112,7 @@ export default function Skills() {
             <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
               <p className="text-sm font-semibold text-white/80">How I use these</p>
               <p className="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                I combine UI craft with practical back-end logic so features feel complete: responsive, secure, and easy to maintain.
+                I focus on clarity: building clean UI, structured APIs, and data flows that stay maintainable in real-world applications.
               </p>
             </div>
           </Reveal>
@@ -116,89 +153,35 @@ export default function Skills() {
           </div>
 
           <div className="lg:col-span-8">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Reveal delayMs={80}>
-                <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
-                  <p className="text-sm font-semibold text-white/80">Skill spotlight</p>
-                  <h3 className="mt-2 text-2xl font-semibold text-white">{selectedSkill.name}</h3>
-                  <p className="mt-3 text-[color:var(--muted)] leading-relaxed">{selectedSkill.description}</p>
+            <Reveal delayMs={80}>
+              <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-white/80">{cat.label}</p>
+                    <p className="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
+                      {cat.description}
+                    </p>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/70">
+                    {cat.skills.length} skills
+                  </span>
+                </div>
 
-                  <div className="mt-5">
-                    <div className="flex items-center justify-between text-xs font-semibold text-white/70">
-                      <span>Proficiency</span>
-                      <span>{selectedSkill.level}%</span>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {cat.skills.map((s) => (
+                    <div
+                      key={s.name}
+                      className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 hover:border-white/20 transition-colors"
+                    >
+                      <p className="text-lg font-semibold text-white">{s.name}</p>
+                      <p className="mt-3 text-sm text-[color:var(--muted)] leading-relaxed">
+                        {s.description}
+                      </p>
                     </div>
-                    <div className="mt-2 h-2 rounded-full bg-white/10 border border-white/10 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300"
-                        style={{ width: `${selectedSkill.level}%` }}
-                      />
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </Reveal>
-
-              <Reveal delayMs={160}>
-                <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
-                  <p className="text-sm font-semibold text-white/80">
-                    {cat.label} skills
-                  </p>
-                  <div className="mt-4 grid gap-3">
-                    {cat.skills.map((s) => {
-                      const isSel = s.name === selected;
-                      return (
-                        <button
-                          key={s.name}
-                          type="button"
-                          onClick={() => setSelected(s.name)}
-                          className={[
-                            "rounded-2xl border px-4 py-3 text-left transition-all",
-                            isSel
-                              ? "border-white/20 bg-white/10 text-white shadow-lg"
-                              : "border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white",
-                          ].join(" ")}
-                          aria-pressed={isSel}
-                        >
-                          <div className="flex items-center justify-between gap-4">
-                            <span className="font-semibold text-sm">{s.name}</span>
-                            <span className="text-xs text-white/55">{s.level}%</span>
-                          </div>
-                          <div className="mt-2 h-1.5 rounded-full bg-white/10 overflow-hidden border border-white/10">
-                            <div
-                              className="h-full bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300"
-                              style={{ width: `${s.level}%` }}
-                            />
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="mt-6">
-              <Reveal delayMs={220}>
-                <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 shadow-xl">
-                  <p className="text-sm font-semibold text-white/80">What this means for you</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {[
-                      "Readable code & maintainable structure",
-                      "UX polish that feels premium",
-                      "Clean API integration",
-                      "Smooth interactions & accessible motion",
-                    ].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 bg-glass px-4 py-2 text-xs font-semibold text-white/80 hover:bg-white/10 transition-colors"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
