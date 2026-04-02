@@ -3,9 +3,9 @@ import BackgroundFX from "./components/BackgroundFX";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-import Achievements from "./components/Achievements";
+import FeaturedPulseProject from "./components/FeaturedPulseProject";
+import OtherProjects from "./components/OtherProjects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -25,9 +25,9 @@ function App() {
         <Hero />
         <About />
         <Skills />
-        <Projects />
         <Experience />
-        <Achievements />
+        <FeaturedPulseProject />
+        <OtherProjects />
         <Contact />
       </main>
       <Footer />

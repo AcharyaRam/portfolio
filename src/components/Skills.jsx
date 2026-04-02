@@ -5,7 +5,7 @@ const categories = [
   {
     id: "frontend",
     label: "Frontend",
-    description: "UI craft, responsive layouts, and interaction polish.",
+    description: "Modern UI, responsive layouts, and clean UX.",
     skills: [
       { name: "React UI", level: 92, description: "Component-driven development with clean state patterns and accessible markup." },
       { name: "JavaScript (ES6+)", level: 90, description: "Readable async flows, robust front-end logic, and modern language features." },
@@ -14,25 +14,27 @@ const categories = [
     ],
   },
   {
-    id: "backend",
-    label: "Backend",
-    description: "REST APIs, auth, and data modeling that holds up.",
+    id: "mern",
+    label: "MERN Backend",
+    description: "Node/Express APIs and MongoDB data flows.",
     skills: [
       { name: "Node.js", level: 86, description: "API logic with practical structure and maintainable routes/services." },
       { name: "Express.js", level: 84, description: "Middleware-driven request handling and clear endpoint design." },
       { name: "MongoDB & Mongoose", level: 82, description: "Schema design, modeling, and query patterns for real app data." },
-      { name: "REST API Development", level: 88, description: "Predictable endpoints with clear contracts and integration-ready responses." },
-      { name: "JWT Authentication", level: 80, description: "Secure-ish flows for protected routes with token-based auth." },
+      { name: "REST API Development", level: 88, description: "Predictable endpoints with integration-ready responses." },
+      { name: "Role-based Access", level: 80, description: "Authentication/authorization patterns with role management where needed." },
     ],
   },
   {
-    id: "tools",
-    label: "Tools",
-    description: "Ship faster with version control and clean collaboration.",
+    id: "dotnet",
+    label: ".NET Backend",
+    description: "ASP.NET Core, EF, and SQL Server apps.",
     skills: [
-      { name: "Git & GitHub", level: 90, description: "Branching discipline, PR workflows, and reliable history for collaboration." },
-      { name: "Performance-minded UI", level: 78, description: "Avoiding unnecessary re-renders and keeping interactions snappy." },
-      { name: "Quality through iteration", level: 80, description: "Refine based on feedback, run quick checks, and improve consistently." },
+      { name: "ASP.NET Core", level: 88, description: "Building full-stack web modules with a structured architecture." },
+      { name: "C#", level: 87, description: "Reliable business logic and clean code organization." },
+      { name: "Entity Framework", level: 84, description: "Data access patterns and database management via EF." },
+      { name: "SQL Server", level: 83, description: "Storing and querying transactional application data." },
+      { name: "MySQL (optional)", level: 74, description: "Database versatility for projects where it fits the requirements." },
     ],
   },
 ];

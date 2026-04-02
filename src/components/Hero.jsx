@@ -21,7 +21,7 @@ function Hero() {
               <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-white">
                 I craft <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200 bg-[length:200%_100%] animate-[gradientShift_5s_ease-in-out_infinite]">premium</span> web experiences
                 <span className="block mt-3 text-xl md:text-2xl font-medium text-white/70">
-                  Full Stack Developer • React • Node • MongoDB
+                  Full Stack Developer • React • Node.js • ASP.NET Core
                 </span>
               </h1>
             </Reveal>
@@ -102,7 +102,7 @@ function Hero() {
                     </p>
                     <p className="mt-2 text-lg font-semibold text-white">Full Stack Developer</p>
                     <p className="mt-1 text-sm text-[color:var(--muted)]">
-                      React • Node.js • Express • MongoDB
+                      React • Node.js • Express • MongoDB • C# / ASP.NET Core
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {["UI Craft", "APIs", "Performance"].map((t) => (
