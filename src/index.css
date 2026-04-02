@@ -4,13 +4,146 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background: radial-gradient(
-      circle at top left,
-      rgba(255, 255, 255, 0.04),
-      transparent 40%
-    ),
-    linear-gradient(to bottom right, #0f172a, #000000);
-  color: #e5e7eb;
+@layer base {
+  :root {
+    --bg0: #060914;
+    --bg1: #0a1226;
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.68);
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow: rgba(0, 0, 0, 0.55);
+    --focus: rgba(99, 102, 241, 0.42);
+    --glass-bg-rgb: 255 255 255;
+    --glass-opacity: 0.12;
+    --glass-border-rgb: 255 255 255;
+    --glass-border-opacity: 0.22;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --bg0: #060914;
+    --bg1: #0a1226;
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.68);
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow: rgba(0, 0, 0, 0.55);
+    --focus: rgba(99, 102, 241, 0.42);
+    --glass-bg-rgb: 255 255 255;
+    --glass-opacity: 0.08;
+    --glass-border-rgb: 255 255 255;
+    --glass-border-opacity: 0.18;
+  }
+
+  html:not(.dark) {
+    /* "Light mode" in this portfolio stays readable with text-white styling. */
+    color-scheme: dark;
+    --bg0: #070a17;
+    --bg1: #0e1b3a;
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.68);
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow: rgba(0, 0, 0, 0.55);
+    --focus: rgba(99, 102, 241, 0.35);
+    --glass-bg-rgb: 255 255 255;
+    --glass-opacity: 0.12;
+    --glass-border-rgb: 255 255 255;
+    --glass-border-opacity: 0.22;
+  }
+
+  body {
+    background: radial-gradient(
+        circle at top left,
+        rgba(99, 102, 241, 0.16),
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(236, 72, 153, 0.12),
+        transparent 35%
+      ),
+      linear-gradient(to bottom right, var(--bg0), var(--bg1));
+    color: var(--text);
+    font-feature-settings: "ss01" 1, "cv01" 1;
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+      Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Better default focus for keyboard users */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus);
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.28);
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+  html:not(.dark) ::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0);
+    background-clip: padding-box;
+  }
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, 14px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 

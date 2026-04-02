@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        glass: "rgba(255,255,255,0.08)",
-        glassBorder: "rgba(255,255,255,0.15)",
+        glass: "rgb(var(--glass-bg-rgb) / var(--glass-opacity))",
+        glassBorder: "rgb(var(--glass-border-rgb) / var(--glass-border-opacity))",
       },
       backdropBlur: {
         xs: "2px",

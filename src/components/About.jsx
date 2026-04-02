@@ -1,35 +1,105 @@
-function About() {
+import Reveal from "./Reveal";
+import { FiCheck } from "react-icons/fi";
+
+export default function About() {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-semibold mb-14 text-white">
-          About Me
-        </h2>
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
+                Personal Brand
+              </p>
+              <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
+                I build clarity-first products
+              </h2>
+              <p className="mt-4 text-[color:var(--muted)] leading-relaxed text-lg">
+                I’m a B.Tech Information Technology student with a strong interest in web development and software engineering.
+                I enjoy turning ideas into clean, responsive, user-friendly web applications using modern technologies.
+              </p>
+            </Reveal>
 
-        <div className="bg-glass backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl max-w-4xl">
-          <p className="text-gray-300 leading-relaxed mb-6">
-            I am a B.Tech Information Technology student with a strong interest in
-            web development and software engineering. I enjoy building clean,
-            responsive, and user-friendly web applications using modern
-            technologies.
-          </p>
+            <Reveal delayMs={120} className="mt-6">
+              <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
+                <p className="text-sm font-semibold text-white/80">My Value</p>
+                <ul className="mt-3 space-y-3">
+                  {[
+                    "Premium UI polish with maintainable components",
+                    "Practical integrations (React + REST APIs + MongoDB)",
+                    "User-first UX with accessible motion and micro-interactions",
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <span className="mt-1 h-5 w-5 rounded-full bg-indigo-400/20 border border-indigo-400/30 grid place-items-center">
+                        <FiCheck className="text-indigo-300" size={14} />
+                      </span>
+                      <span className="text-[color:var(--muted)]">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
 
-          <p className="text-gray-300 leading-relaxed mb-6">
-            During my diploma studies, I completed an internship at KS Technology,
-            where I gained practical exposure to real-world development
-            environments and learned how professional projects are planned,
-            developed, and maintained.
-          </p>
+          <div className="lg:col-span-7">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Reveal delayMs={60}>
+                <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
+                  <p className="text-sm font-semibold text-white/80">Story</p>
+                  <p className="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    During my diploma studies, I completed an internship at KS Technology—gaining exposure to professional development environments.
+                  </p>
+                </div>
+              </Reveal>
+              <Reveal delayMs={140}>
+                <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
+                  <p className="text-sm font-semibold text-white/80">How I work</p>
+                  <p className="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    I plan, build, refine—then focus on the parts users feel: speed, responsiveness, and visual depth.
+                  </p>
+                </div>
+              </Reveal>
+              <Reveal delayMs={220} className="sm:col-span-2">
+                <div className="rounded-3xl border border-white/10 bg-gradient-to-tr from-indigo-500/10 via-white/5 to-fuchsia-500/10 p-6 shadow-xl">
+                  <p className="text-sm font-semibold text-white/80">What I keep improving</p>
+                  <p className="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    I’m continuously improving by building projects, learning new technologies, and applying knowledge through hands-on practice.
+                    My goal is simple: deliver experiences that feel premium and perform reliably.
+                  </p>
 
-          <p className="text-gray-300 leading-relaxed">
-            I am continuously improving my technical skills by building projects,
-            learning new technologies, and applying my knowledge through hands-on
-            practice.
-          </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {["React UI", "REST APIs", "MongoDB", "Responsive UX"].map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delayMs={260} className="mt-4">
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center rounded-2xl bg-white text-black px-5 py-3 font-semibold shadow-xl hover:scale-[1.02] transition-transform"
+                >
+                  View Case Studies
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-glass backdrop-blur-xl px-5 py-3 font-semibold text-white/90 shadow-lg hover:bg-white/10 hover:border-white/25 transition-all"
+                >
+                  Hire / Collaborate
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-export default About;
