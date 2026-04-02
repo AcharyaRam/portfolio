@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { FiExternalLink, FiGrid, FiInfo } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import Reveal from "./Reveal";
 import Modal from "./Modal";
 
@@ -177,27 +177,6 @@ export default function OtherProjects() {
                   <p className="mt-3 text-xs text-white/60 leading-relaxed">
                     Want a walkthrough? Send a message and I’ll share details.
                   </p>
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white/80">
-                    <FiGrid size={16} />
-                    What recruiters scan
-                  </div>
-                  <ul className="mt-3 space-y-2 text-sm text-[color:var(--muted)]">
-                    <li className="flex items-start gap-2">
-                      <FiInfo size={16} className="mt-0.5 text-indigo-300" />
-                      Clear module separation and predictable features
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <FiInfo size={16} className="mt-0.5 text-indigo-300" />
-                      Practical full-stack integration
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <FiInfo size={16} className="mt-0.5 text-indigo-300" />
-                      UI readability and premium interaction polish
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

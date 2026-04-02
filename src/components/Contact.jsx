@@ -269,33 +269,13 @@ export default function Contact() {
 
             <Reveal delayMs={120}>
               <div className="rounded-3xl border border-white/10 bg-gradient-to-tr from-indigo-500/15 via-white/5 to-fuchsia-500/10 backdrop-blur-xl p-7 shadow-2xl">
-                <p className="text-sm font-semibold text-white/80">
-                  What to include
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-[color:var(--muted)]">
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-indigo-300" />
-                    Your role or opportunity
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-fuchsia-300" />
-                    Scope + timeline
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-200" />
-                    What success looks like
-                  </li>
-                </ul>
-
-                <div className="mt-6">
-                  <a
-                    href="/Ram_Acharya_Resume.pdf"
-                    download
-                    className="inline-flex w-full items-center justify-center rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-lg hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] transition-transform"
-                  >
-                    Download Resume
-                  </a>
-                </div>
+                <a
+                  href="/Ram_Acharya_Resume.pdf"
+                  download
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-lg hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] transition-transform"
+                >
+                  Download my latest resume
+                </a>
               </div>
             </Reveal>
           </div>

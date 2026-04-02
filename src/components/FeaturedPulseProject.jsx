@@ -1,7 +1,10 @@
-import { FiArrowRight, FiCheck, FiLock, FiShield } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiExternalLink, FiLock, FiShield } from "react-icons/fi";
 import Reveal from "./Reveal";
 
 import pulseScreenshot from "../assets/PharmaPulse.png";
+
+const PULSE_LIVE_DEMO_URL =
+  "https://pharmacyapp2026-hherbzc8cac7cve8.centralindia-01.azurewebsites.net/Login";
 
 export default function FeaturedPulseProject() {
   const features = [
@@ -138,6 +141,18 @@ export default function FeaturedPulseProject() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href={PULSE_LIVE_DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform"
+                >
+                  Live Demo
+                  <FiExternalLink size={16} aria-hidden />
+                </a>
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
