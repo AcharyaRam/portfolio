@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import InitialLoader from "./components/InitialLoader";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -8,17 +9,18 @@ export default function Root() {
 
   return (
     <ThemeProvider>
-      <InitialLoader minDurationMs={700} onReady={() => setReady(true)} />
-      <div
-        className={[
-          "min-h-screen",
-          "transition-opacity duration-500 ease-out",
-          ready ? "opacity-100" : "opacity-0",
-        ].join(" ")}
-      >
-        <App />
-      </div>
+      <BrowserRouter>
+        <InitialLoader minDurationMs={700} onReady={() => setReady(true)} />
+        <div
+          className={[
+            "min-h-screen",
+            "transition-opacity duration-500 ease-out",
+            ready ? "opacity-100" : "opacity-0",
+          ].join(" ")}
+        >
+          <App />
+        </div>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
-

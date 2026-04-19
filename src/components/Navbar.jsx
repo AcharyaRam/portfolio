@@ -1,97 +1,47 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import { Link, NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 const links = [
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" },
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About" },
+  { to: "/skills", label: "Skills" },
+  { to: "/projects", label: "Projects" },
+  { to: "/experience", label: "Experience" },
+  { to: "/contact", label: "Contact" },
 ];
 
-/** Pixels from top of viewport; aligns with fixed nav + where “current section” should flip. */
-const SCROLL_ACTIVE_OFFSET = 96;
-
-function activeIdFromScroll(linkIds) {
-  const marker = window.scrollY + SCROLL_ACTIVE_OFFSET;
-  const byDocumentOrder = linkIds
-    .map((id) => {
-      const el = document.getElementById(id);
-      if (!el) return null;
-      return {
-        id,
-        top: el.getBoundingClientRect().top + window.scrollY,
-      };
-    })
-    .filter(Boolean)
-    .sort((a, b) => a.top - b.top);
-
-  if (!byDocumentOrder.length) return linkIds[0];
-
-  let current = byDocumentOrder[0].id;
-  for (const { id, top } of byDocumentOrder) {
-    if (top <= marker) current = id;
-  }
-  return current;
+function desktopNavClass({ isActive }) {
+  return [
+    "relative text-sm font-semibold transition-colors",
+    "after:pointer-events-none after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:rounded-full after:bg-gradient-to-r after:from-indigo-400 after:via-fuchsia-400 after:to-cyan-300 after:transition-opacity after:duration-200",
+    isActive ? "text-white after:opacity-100" : "text-white/70 hover:text-white after:opacity-0",
+  ].join(" ");
 }
+
+const mobileLinkClass = ({ isActive }) =>
+  [
+    "rounded-2xl border px-4 py-3 text-sm font-semibold transition-all",
+    isActive
+      ? "border-white/20 bg-white/10 text-white"
+      : "border-white/10 bg-glass/20 text-white/70 hover:text-white hover:bg-white/10",
+  ].join(" ");
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [active, setActive] = useState("about");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
-  const ignoreScrollSpyUntilRef = useRef(0);
 
   const sortedLinks = useMemo(() => links, []);
 
-  useEffect(() => {
-    const linkIds = sortedLinks.map((l) => l.id);
-    let raf = 0;
-
-    const tick = () => {
-      if (Date.now() < ignoreScrollSpyUntilRef.current) return;
-      const next = activeIdFromScroll(linkIds);
-      setActive((prev) => (prev === next ? prev : next));
-    };
-
-    const onScrollOrResize = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(tick);
-    };
-
-    tick();
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
-    };
-  }, [sortedLinks]);
-
-  function scrollToId(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function onNavClick(e, id) {
-    e.preventDefault();
-    setMobileOpen(false);
-    setActive(id);
-    ignoreScrollSpyUntilRef.current = Date.now() + 900;
-
-    if (transitioning) return;
+  function pulseNavTransition() {
     setTransitioning(true);
-
-    window.setTimeout(() => scrollToId(id), 90);
-    window.setTimeout(() => setTransitioning(false), 420);
+    window.setTimeout(() => setTransitioning(false), 320);
   }
 
   return (
     <nav className="fixed top-0 w-full z-50">
-      {/* Smooth transition overlay */}
       <div
         aria-hidden
         className={[
@@ -102,11 +52,14 @@ export default function Navbar() {
 
       <div className="backdrop-blur-xl bg-glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4">
-          <a
-            href="#top"
-            onClick={(e) => onNavClick(e, "top")}
+          <Link
+            to="/"
+            onClick={() => {
+              setMobileOpen(false);
+              pulseNavTransition();
+            }}
             className="group flex items-center gap-3"
-            aria-label="Go to top"
+            aria-label="Ram Acharya — Home"
           >
             <span className="relative grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-glass shadow-lg group-hover:shadow-xl transition-shadow overflow-hidden">
               <span className="absolute inset-0 bg-gradient-to-tr from-indigo-400/35 via-fuchsia-400/25 to-cyan-300/25 blur-[1px]" />
@@ -120,34 +73,20 @@ export default function Navbar() {
                 Full Stack Developer
               </span>
             </span>
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-6">
-            {sortedLinks.map((l) => {
-              const isActive = active === l.id;
-              return (
-                <a
-                  key={l.id}
-                  href={`#${l.id}`}
-                  onClick={(e) => onNavClick(e, l.id)}
-                  className={[
-                    "relative text-sm font-semibold transition-colors",
-                    isActive ? "text-white" : "text-white/70 hover:text-white",
-                  ].join(" ")}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {l.label}
-                  <span
-                    aria-hidden
-                    className={[
-                      "absolute left-0 -bottom-2 h-[2px] w-full rounded-full bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300",
-                      isActive ? "opacity-100" : "opacity-0",
-                      "transition-opacity duration-200",
-                    ].join(" ")}
-                  />
-                </a>
-              );
-            })}
+            {sortedLinks.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={Boolean(l.end)}
+                className={desktopNavClass}
+                onClick={pulseNavTransition}
+              >
+                {l.label}
+              </NavLink>
+            ))}
           </div>
 
           <div className="flex items-center gap-3">
@@ -172,7 +111,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         <div
           className={[
             "lg:hidden overflow-hidden transition-[max-height,opacity] duration-300",
@@ -180,23 +118,20 @@ export default function Navbar() {
           ].join(" ")}
         >
           <div className="px-5 pb-4 grid gap-2">
-            {sortedLinks.map((l) => {
-              const isActive = active === l.id;
-              return (
-                <a
-                  key={l.id}
-                  href={`#${l.id}`}
-                  onClick={(e) => onNavClick(e, l.id)}
-                  className={[
-                    "rounded-2xl border px-4 py-3 text-sm font-semibold transition-all",
-                    isActive ? "border-white/20 bg-white/10 text-white" : "border-white/10 bg-glass/20 text-white/70 hover:text-white hover:bg-white/10",
-                  ].join(" ")}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {l.label}
-                </a>
-              );
-            })}
+            {sortedLinks.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={Boolean(l.end)}
+                className={mobileLinkClass}
+                onClick={() => {
+                  setMobileOpen(false);
+                  pulseNavTransition();
+                }}
+              >
+                {l.label}
+              </NavLink>
+            ))}
 
             <button
               type="button"

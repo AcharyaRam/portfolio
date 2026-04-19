@@ -1,6 +1,7 @@
 import profile from "../assets/profile.jpg";
 import Reveal from "./Reveal";
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -35,20 +36,20 @@ function Hero() {
 
             <Reveal delayMs={220} className="mt-8">
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#projects"
+                <Link
+                  to="/projects"
                   className="inline-flex items-center gap-2 rounded-2xl bg-white text-black px-5 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform"
                 >
                   View Projects
                   <FiArrowRight size={18} />
-                </a>
+                </Link>
 
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-glass backdrop-blur-xl px-5 py-3 font-semibold text-white/90 shadow-lg hover:bg-white/10 hover:border-white/25 hover:shadow-xl transition-all"
                 >
                   Contact
-                </a>
+                </Link>
 
                 <a
                   href="/Ram_Acharya_Resume.pdf"

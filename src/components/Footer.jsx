@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="px-6 pb-10 pt-16">
@@ -7,12 +9,12 @@ export default function Footer() {
             © {new Date().getFullYear()} Ram Acharya.
           </p>
           <div className="flex items-center gap-4 text-sm text-white/70">
-            <a className="hover:text-white transition-colors" href="#projects">
+            <Link className="hover:text-white transition-colors" to="/projects">
               Projects
-            </a>
-            <a className="hover:text-white transition-colors" href="#contact">
+            </Link>
+            <Link className="hover:text-white transition-colors" to="/contact">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>

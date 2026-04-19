@@ -1,4 +1,5 @@
 import { FiArrowRight, FiCheck, FiExternalLink, FiLock, FiShield } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 
 import pulseScreenshot from "../assets/PharmaPulse.png";
@@ -18,7 +19,7 @@ export default function FeaturedPulseProject() {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="pulse-pharma" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-start justify-between gap-10 mb-10">
           <div className="max-w-2xl">
@@ -45,13 +46,13 @@ export default function FeaturedPulseProject() {
                 Clear modules, reliable CRUD + data integrity, and secure backend API design.
               </p>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white/90 shadow-lg hover:bg-white/10 hover:border-white/25 hover:shadow-[0_0_32px_rgba(255,255,255,0.12)] transition-colors"
               >
                 Discuss this project
                 <FiArrowRight size={18} />
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>
@@ -156,13 +157,13 @@ export default function FeaturedPulseProject() {
               </div>
 
               <div className="mt-8">
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform"
                 >
                   Hire / Collaborate
                   <FiArrowRight size={18} />
-                </a>
+                </Link>
               </div>
             </div>
           </Reveal>

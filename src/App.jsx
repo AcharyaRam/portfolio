@@ -1,38 +1,23 @@
-import Navbar from "./components/Navbar";
-import BackgroundFX from "./components/BackgroundFX";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import FeaturedPulseProject from "./components/FeaturedPulseProject";
-import OtherProjects from "./components/OtherProjects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { Route, Routes } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import HomePage from "./pages/HomePage";
+import ProjectsPage from "./pages/ProjectsPage";
+import SkillsPage from "./pages/SkillsPage";
 
-function App() {
+export default function App() {
   return (
-    <div className="relative">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[200] rounded-2xl bg-white text-black px-4 py-3 font-semibold"
-      >
-        Skip to content
-      </a>
-
-      <BackgroundFX />
-      <Navbar />
-      <main id="main" className="relative">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <FeaturedPulseProject />
-        <OtherProjects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import { FiCheck } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -83,18 +84,18 @@ export default function About() {
 
             <Reveal delayMs={260} className="mt-4">
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#projects"
+                <Link
+                  to="/projects"
                   className="inline-flex items-center justify-center rounded-2xl bg-white text-black px-5 py-3 font-semibold shadow-xl hover:scale-[1.02] transition-transform"
                 >
                   View Case Studies
-                </a>
-                <a
-                  href="#contact"
+                </Link>
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-glass backdrop-blur-xl px-5 py-3 font-semibold text-white/90 shadow-lg hover:bg-white/10 hover:border-white/25 transition-all"
                 >
                   Hire / Collaborate
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>

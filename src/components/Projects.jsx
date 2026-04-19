@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import Modal from "./Modal";
 
@@ -141,13 +142,13 @@ function Projects() {
                 </div>
 
                 <div className="mt-6">
-                  <a
-                    href="#contact"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white/90 hover:bg-white/10 hover:border-white/25 transition-colors"
                   >
                     Request a walkthrough
                     <FiExternalLink size={16} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
