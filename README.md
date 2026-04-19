@@ -1,16 +1,58 @@
-# React + Vite
+# Ram Acharya – Full Stack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Full Stack Developer based in Vadodara (MERN & ASP.NET)
 
-Currently, two official plugins are available:
+🌐 Live Website: https://ramacharya.me
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 💼 About This Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This is my personal portfolio website built to showcase real-world projects, skills, and experience.
 
-## Expanding the ESLint configuration
+It highlights:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Scalable full stack applications
+- Clean UI/UX design
+- Production-ready architecture
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React.js
+- Vite
+- Tailwind CSS
+
+### Backend
+- Node.js
+- Express.js
+- ASP.NET Core
+
+### Database
+- MongoDB
+- SQL Server
+
+---
+
+## 🚀 Featured Projects
+
+### 🧪 Pharma Pulse
+- Pharmacy Management & Billing System
+- Built with ASP.NET Core, C#, Entity Framework, SQL Server
+
+### 🛠 Fixit Marketplace
+- Local services marketplace (MERN stack)
+- Includes authentication, booking, and role-based features
+
+---
+
+## 📩 Contact
+
+- LinkedIn: https://www.linkedin.com/in/ram-acharya-03793026a
+- Portfolio: https://ramacharya.me
+
+---
+
+⭐ If you like this project, consider starring the repo!
