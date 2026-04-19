@@ -20,17 +20,16 @@ function Hero() {
 
             <Reveal delayMs={80} className="mt-5">
               <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-white">
-                I craft <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200 bg-[length:200%_100%] animate-[gradientShift_5s_ease-in-out_infinite]">premium</span> web experiences
+               Full Stack <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200 bg-[length:200%_100%] animate-[gradientShift_5s_ease-in-out_infinite]">Developer </span> in Vadodara
                 <span className="block mt-3 text-xl md:text-2xl font-medium text-white/70">
-                  Full Stack Developer • React • Node.js • ASP.NET Core
+                  Full Stack Developer in Vadodara • React • Node.js • ASP.NET Core
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delayMs={160} className="mt-6 max-w-2xl">
               <p className="text-[color:var(--muted)] text-lg leading-relaxed">
-                I turn ideas into production-ready products: clean UI, reliable APIs, and interactions that feel effortless.
-                Built for recruiters and clients who want signal, not noise.
+                I am a Full Stack Developer based in Vadodara, Gujarat, building high-performance web applications using MERN and ASP.NET Core.
               </p>
             </Reveal>
 

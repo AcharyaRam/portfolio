@@ -5,11 +5,12 @@ export default function AboutPage() {
   return (
     <>
       <PageMeta
-        title="About Ram Acharya | B.Tech IT & Full Stack Web Developer"
-        description="Learn how Ram Acharya builds clarity-first products: B.Tech Information Technology background, internship at KS Technology, React & REST focus, premium UI, and a practical approach to scalable web apps."
+        title="About Ram Acharya | Full Stack Developer in Vadodara (MERN & ASP.NET)"
+        description="I am a Full Stack Developer in Vadodara specializing in React, Node.js, and ASP.NET Core. Explore my journey, internship at KS Technology, and how I build scalable web applications."
         path="/about"
-        keywords="about Ram Acharya, B.Tech IT, web developer Vadodara, KS Technology internship, React developer story, full stack journey, personal brand, UI engineer"
-        ogImageAlt="About Ram Acharya — developer story and values"
+        ogImage="/og-image.png"
+        ogImageAlt="About Ram Acharya – Full Stack Developer Vadodara"
+        canonical="https://ramacharya.me/about"
       />
       <About />
     </>

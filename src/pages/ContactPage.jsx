@@ -5,11 +5,12 @@ export default function ContactPage() {
   return (
     <>
       <PageMeta
-        title="Contact Ram Acharya | Hire, Collaborate & Project Inquiries"
-        description="Reach Ram Acharya for freelance, full-time, or collaboration: contact form with WhatsApp handoff, direct email (mailto), LinkedIn, GitHub, and resume PDF. Based in Vadodara; replies typically within 24–48 hours."
+        title="Hire Web Developer in Vadodara | Full Stack MERN & ASP.NET – Ram Acharya"
+        description="Looking to hire a Full Stack Developer in Vadodara? Contact Ram Acharya for freelance or full-time projects. Reach via WhatsApp, email, or LinkedIn. Fast response within 24 hours."
         path="/contact"
-        keywords="contact Ram Acharya, hire full stack developer Vadodara, collaborate MERN, LinkedIn Ram Acharya, GitHub AcharyaRam, portfolio email, WhatsApp contact developer, resume download"
-        ogImageAlt="Contact Ram Acharya — hire and collaborate"
+        ogImage="/og-image.png"
+        ogImageAlt="Contact Ram Acharya – Hire Full Stack Developer Vadodara"
+        canonical="https://ramacharya.me/contact"
       />
       <Contact />
     </>

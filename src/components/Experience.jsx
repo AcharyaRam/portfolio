@@ -20,7 +20,7 @@ export default function Experience() {
       when: "Jan 2026 – Present",
       status: "Active",
       bullets: [
-        "Worked on Pulse Pharma (Pharmacy Management Software)",
+        "Worked on Pulse Pharma (Pharmacy Management Software) as a Full Stack Developer in Vadodara",
         "Built responsive frontend modules for inventory, billing, and records",
         "Implemented secure backend APIs using Entity Framework and SQL Server",
         "Developed scalable CRUD operations for medicine and pharmacy data",
@@ -49,8 +49,11 @@ export default function Experience() {
                 Experience & Education
               </p>
               <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
-                Real work. Real learning.
+                Building Real-World Experience as a Full Stack Developer in Vadodara
               </h2>
+              <p className="mt-3 text-lg text-white/70 max-w-2xl">
+                My journey as a Full Stack Developer in Vadodara, including internships, real-world projects, and hands-on experience with MERN and ASP.NET technologies.
+              </p>
             </div>
           </div>
         </Reveal>

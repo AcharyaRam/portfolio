@@ -91,11 +91,14 @@ export default function Contact() {
                 Contact
               </p>
               <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
-                Let’s build something premium
+                Hire Full Stack Developer in Vadodara
               </h2>
+              <p className="mt-3 text-xl text-white/70">
+                MERN & ASP.NET Developer • Available for freelance & full-time work
+              </p>
               <p className="mt-4 text-lg text-[color:var(--muted)] leading-relaxed">
-                If you’d like to get in touch regarding opportunities, collaborations, or questions, feel free to reach out. I typically respond within{" "}
-                <span className="text-white/90 font-semibold">24 to 48 hours</span>.
+              Looking to hire a Full Stack Developer in Vadodara? I build fast, scalable web applications using React, Node.js, and ASP.NET Core. Feel free to contact me for freelance or full-time opportunities.
+                <span className="text-white/90 font-semibold"></span>.
               </p>
             </Reveal>
           </div>

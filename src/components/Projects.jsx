@@ -15,7 +15,7 @@ function Projects() {
         title: "Online Marketplace for Local Services",
         subtitle: "Connect clients with trusted local providers",
         summary:
-          "A full-stack marketplace concept built for discovery, clean UX, and integration-ready API design between users and providers.",
+          "A full-stack marketplace application built by a Full Stack Developer in Vadodara, focused on scalable architecture and clean user experience.",
         highlights: [
           "Category-first browsing experience for faster discovery",
           "Auth-ready flow using JWT concept and protected routes idea",
@@ -31,7 +31,7 @@ function Projects() {
         title: "Personal Portfolio Website",
         subtitle: "Premium storytelling with modern UI polish",
         summary:
-          "A recruiter-friendly portfolio with case-study style project presentation, smooth interactions, and conversion-focused contact UX.",
+          "A professional portfolio website built as a Full Stack Developer in Vadodara, focused on premium UI and strong SEO performance.",
         highlights: [
           "Glass + gradient depth system for a premium aesthetic",
           "Scroll reveal animations and micro-interactions",
@@ -56,11 +56,14 @@ function Projects() {
           <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
             Featured Projects
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
-            Case studies recruiters can scan fast
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
+            Full Stack Developer Projects in Vadodara
+          </h1>
+          <p className="mt-3 text-lg text-white/70 max-w-2xl">
+            I am a Full Stack Developer based in Vadodara, Gujarat, building scalable web applications with real business use cases.
+          </p>
           <p className="mt-4 text-lg text-[color:var(--muted)] max-w-2xl leading-relaxed">
-            Click a project for a compact case-study breakdown (highlights + stack).
+            Explore real-world full stack projects built in Vadodara using MERN and ASP.NET Core. Click any project to view detailed case studies.
           </p>
         </Reveal>
 

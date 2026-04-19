@@ -5,7 +5,7 @@ const categories = [
   {
     id: "frontend",
     label: "Frontend",
-    description: "UI engineering and responsive UX that feels premium.",
+    description: "Crafting responsive and high-performance user interfaces with a focus on clean design and smooth user experience.",
     skills: [
       {
         name: "React",
@@ -99,9 +99,12 @@ export default function Skills() {
               <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
                 Skills & Tech Stack
               </p>
-              <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
-                Skills, explained through usage
-              </h2>
+              <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
+                Full Stack Developer Skills in Vadodara
+              </h1>
+              <p className="mt-3 text-lg text-white/70 max-w-xl">
+                My technical skills include frontend development with React, backend systems with ASP.NET Core and Node.js, and database management using SQL Server and MongoDB.
+              </p>
             </Reveal>
           </div>
 
@@ -109,7 +112,7 @@ export default function Skills() {
             <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
               <p className="text-sm font-semibold text-white/80">How I use these</p>
               <p className="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                I focus on clarity: building clean UI, structured APIs, and data flows that stay maintainable in real-world applications.
+                As a Full Stack Developer in Vadodara, I build clean UI, structured APIs, and scalable backend systems using modern technologies.
               </p>
             </div>
           </Reveal>

@@ -7,11 +7,12 @@ export default function ProjectsPage() {
   return (
     <>
       <PageMeta
-        title="Projects & Case Studies | Pulse Pharma, Fixit Marketplace & Portfolio"
-        description="Deep dives: Pulse Pharma — ASP.NET Core, C#, Entity Framework, SQL Server, live Azure demo; Fixit — React, Node, Express, MongoDB marketplace; personal portfolio with Vite & Tailwind. Repos, stacks, and highlights."
+        title="Best Full Stack Developer Projects in Vadodara | MERN & ASP.NET – Ram Acharya"
+        description="Looking to hire a Full Stack Developer in Vadodara? Explore real-world projects by Ram Acharya including Pharma Pulse and MERN marketplace apps. View tech stack, case studies, and results."
         path="/projects"
-        keywords="Pulse Pharma project, pharmacy management system, ASP.NET Core portfolio, Fixit marketplace, MERN project GitHub, React portfolio Vite, case study, live demo Azure, SQL Server CRUD, Ram Acharya projects"
-        ogImageAlt="Ram Acharya — featured projects and case studies"
+        ogImage="/og-image.png"
+        ogImageAlt="Ram Acharya – Full Stack Developer Projects Vadodara"
+        canonical="https://ramacharya.me/projects"
       />
       <FeaturedPulseProject />
       <Projects />

@@ -82,7 +82,7 @@ export default function OtherProjects() {
         title: "Portfolio Website",
         subtitle: "Responsive, recruiter-friendly presentation",
         summary:
-          "A modern portfolio built with React + Tailwind that organizes projects, skills, and contact in a clear single-page flow.",
+          "A professional portfolio website built as a Full Stack Developer in Vadodara, focused on premium UI and strong SEO performance.",
         highlights: [
           "Responsive layout for mobile-first readability",
           "Resume download support via a direct PDF link",

@@ -5,11 +5,12 @@ export default function HomePage() {
   return (
     <>
       <PageMeta
-        title="Ram Acharya | Full Stack Developer in Vadodara — MERN & .NET"
-        description="Full Stack Developer portfolio: premium React UI, Node.js & Express APIs, ASP.NET Core & Entity Framework apps. Featured Pulse Pharma, Fixit MERN marketplace, skills, experience, and contact."
+        title="Best Full Stack Developer in Vadodara | MERN & ASP.NET Expert – Ram Acharya"
+        description="Looking for a Full Stack Developer in Vadodara? I build fast, scalable web apps using React, Node.js, and ASP.NET Core. Explore real projects like Pharma Pulse and hire me today."
         path="/"
-        keywords="Ram Acharya, Full Stack Developer, Vadodara, Gujarat, MERN stack, React developer, Node.js, ASP.NET Core, C#, Entity Framework, SQL Server, MongoDB, portfolio, web developer India"
-        ogImageAlt="Ram Acharya — Full Stack Developer portfolio home"
+        ogImage="/og-image.png"
+        ogImageAlt="Ram Acharya – Full Stack Developer in Vadodara Portfolio"
+        canonical="https://ramacharya.me/"
       />
       <Hero />
     </>

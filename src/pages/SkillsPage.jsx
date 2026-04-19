@@ -5,11 +5,11 @@ export default function SkillsPage() {
   return (
     <>
       <PageMeta
-        title="Tech Stack & Skills | React, ASP.NET Core, Node.js, SQL & MongoDB"
-        description="Skills explained through real usage: Frontend with React, JavaScript ES6+, HTML5/CSS3, responsive design; Backend with ASP.NET Core, C#, Node.js & Express; databases SQL Server, MongoDB, MySQL; auth and API design."
-        path="/skills"
-        keywords="React skills, JavaScript ES6, HTML5 CSS3, responsive design, ASP.NET Core, C# developer, Entity Framework, Node.js Express, REST API, SQL Server, MongoDB, MySQL, JWT authentication, MERN, tech stack"
-        ogImageAlt="Ram Acharya — skills and technologies"
+        title="Full Stack Developer Skills in Vadodara | MERN & ASP.NET Expertise – Ram Acharya"
+        description="I am a Full Stack Developer in Vadodara skilled in React, Node.js, ASP.NET Core, and databases like SQL Server and MongoDB. I build scalable and high-performance web applications."
+        ogImage="/og-image.png"
+        ogImageAlt="Ram Acharya – Full Stack Developer Skills Vadodara"
+        canonical="https://ramacharya.me/skills"
       />
       <Skills />
     </>

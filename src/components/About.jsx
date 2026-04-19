@@ -13,11 +13,13 @@ export default function About() {
                 Personal Brand
               </p>
               <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
-                I build clarity-first products
+                Full Stack Developer in Vadodara, Gujarat
               </h2>
+              <p className="mt-3 text-xl text-white/70">
+                MERN & ASP.NET Developer building scalable web applications
+              </p>
               <p className="mt-4 text-[color:var(--muted)] leading-relaxed text-lg">
-                I’m a B.Tech Information Technology student with a strong interest in web development and software engineering.
-                I enjoy turning ideas into clean, responsive, user-friendly web applications using modern technologies.
+              I am a Full Stack Developer based in Vadodara, Gujarat, with a B.Tech in Information Technology. I specialize in building scalable web applications using React, Node.js, and ASP.NET Core.
               </p>
             </Reveal>
 
@@ -48,7 +50,7 @@ export default function About() {
                 <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-6 shadow-xl">
                   <p className="text-sm font-semibold text-white/80">Story</p>
                   <p className="mt-3 text-[color:var(--muted)] leading-relaxed">
-                    During my diploma studies, I completed an internship at KS Technology—gaining exposure to professional development environments.
+                    As a Full Stack Developer in Vadodara, I gained hands-on experience during my internship at KS Technology, working on real-world applications.
                   </p>
                 </div>
               </Reveal>
