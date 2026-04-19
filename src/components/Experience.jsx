@@ -48,9 +48,9 @@ export default function Experience() {
               <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
                 Experience & Education
               </p>
-              <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
+              <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
                 Building Real-World Experience as a Full Stack Developer in Vadodara
-              </h2>
+              </h1>
               <p className="mt-3 text-lg text-white/70 max-w-2xl">
                 My journey as a Full Stack Developer in Vadodara, including internships, real-world projects, and hands-on experience with MERN and ASP.NET technologies.
               </p>

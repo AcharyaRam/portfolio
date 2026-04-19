@@ -90,9 +90,9 @@ export default function Contact() {
               <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
                 Contact
               </p>
-              <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
+              <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
                 Hire Full Stack Developer in Vadodara
-              </h2>
+              </h1>
               <p className="mt-3 text-xl text-white/70">
                 MERN & ASP.NET Developer • Available for freelance & full-time work
               </p>

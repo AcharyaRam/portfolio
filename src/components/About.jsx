@@ -12,9 +12,9 @@ export default function About() {
               <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
                 Personal Brand
               </p>
-              <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
+              <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200">
                 Full Stack Developer in Vadodara, Gujarat
-              </h2>
+              </h1>
               <p className="mt-3 text-xl text-white/70">
                 MERN & ASP.NET Developer building scalable web applications
               </p>
