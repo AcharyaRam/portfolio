@@ -207,9 +207,6 @@ function Projects() {
                   View repository
                   <FiExternalLink size={16} />
                 </a>
-                <p className="mt-3 text-xs text-white/60 leading-relaxed">
-                  Want a walkthrough? Send a message and I’ll share details.
-                </p>
               </div>
             </div>
           </div>

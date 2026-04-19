@@ -155,13 +155,7 @@ export default function FeaturedPulseProject() {
                 </a>
               </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm font-semibold text-white/80">Next step</p>
-                  <p className="mt-1 text-sm text-[color:var(--muted)] leading-relaxed">
-                    Want a walkthrough tailored to your role (inventory, billing, APIs)?
-                  </p>
-                </div>
+              <div className="mt-8">
                 <a
                   href="#contact"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform"

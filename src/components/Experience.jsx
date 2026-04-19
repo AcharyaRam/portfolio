@@ -52,12 +52,6 @@ export default function Experience() {
                 Real work. Real learning.
               </h2>
             </div>
-
-            <div className="hidden md:block rounded-2xl border border-white/10 bg-glass backdrop-blur-xl p-5 shadow-lg">
-              <p className="text-sm text-[color:var(--muted)] max-w-[26rem]">
-                A compact timeline recruiters can scan quickly: education first, then what you built in professional settings.
-              </p>
-            </div>
           </div>
         </Reveal>
 

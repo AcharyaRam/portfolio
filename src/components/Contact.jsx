@@ -8,6 +8,8 @@ import {
   FiMail,
 } from "react-icons/fi";
 
+const WHATSAPP_E164 = "916353457936"; // +91 6353457936
+
 export default function Contact() {
   const email = "ramacharya333@gmail.com";
   const [copied, setCopied] = useState(false);
@@ -39,26 +41,44 @@ export default function Contact() {
     }
   }
 
+  function contactFormValidationError() {
+    if (!form.message.trim()) return "Please add a short message.";
+    if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      return "Please enter a valid email address.";
+    }
+    if (!form.name.trim()) return "Please enter your name.";
+    return null;
+  }
+
+  function openEmailWithForm() {
+    setError("");
+    const validationError = contactFormValidationError();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    window.location.href = mailtoHref;
+  }
+
   function submit(e) {
     e.preventDefault();
     setError("");
 
-    if (!form.message.trim()) {
-      setError("Please add a short message.");
+    const validationError = contactFormValidationError();
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
-    if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-      setError("Please enter a valid email address.");
-      return;
-    }
+    const whatsappText = [
+      `Name: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      "",
+      form.message.trim(),
+    ].join("\n");
 
-    if (!form.name.trim()) {
-      setError("Please enter your name.");
-      return;
-    }
-
-    window.location.href = mailtoHref;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(whatsappText)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -103,7 +123,7 @@ export default function Contact() {
                   Send a message
                 </p>
                 <p className="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                  This uses your email client (mailto), so it’s lightweight and privacy-friendly.
+                  Send opens WhatsApp with your details filled in. Prefer email? Use the button on the right.
                 </p>
               </div>
 
@@ -166,12 +186,13 @@ export default function Contact() {
                   Send Message
                 </button>
 
-                <a
-                  href={mailtoHref}
+                <button
+                  type="button"
+                  onClick={openEmailWithForm}
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10 hover:border-white/25 transition-colors"
                 >
                   Use email directly
-                </a>
+                </button>
               </div>
             </form>
           </Reveal>

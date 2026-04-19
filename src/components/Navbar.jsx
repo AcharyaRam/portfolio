@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
 
@@ -10,34 +10,64 @@ const links = [
   { id: "contact", label: "Contact" },
 ];
 
+/** Pixels from top of viewport; aligns with fixed nav + where “current section” should flip. */
+const SCROLL_ACTIVE_OFFSET = 96;
+
+function activeIdFromScroll(linkIds) {
+  const marker = window.scrollY + SCROLL_ACTIVE_OFFSET;
+  const byDocumentOrder = linkIds
+    .map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      return {
+        id,
+        top: el.getBoundingClientRect().top + window.scrollY,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.top - b.top);
+
+  if (!byDocumentOrder.length) return linkIds[0];
+
+  let current = byDocumentOrder[0].id;
+  for (const { id, top } of byDocumentOrder) {
+    if (top <= marker) current = id;
+  }
+  return current;
+}
+
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [active, setActive] = useState("about");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
+  const ignoreScrollSpyUntilRef = useRef(0);
 
   const sortedLinks = useMemo(() => links, []);
 
   useEffect(() => {
-    const els = sortedLinks
-      .map((l) => document.getElementById(l.id))
-      .filter(Boolean);
+    const linkIds = sortedLinks.map((l) => l.id);
+    let raf = 0;
 
-    if (!els.length) return;
+    const tick = () => {
+      if (Date.now() < ignoreScrollSpyUntilRef.current) return;
+      const next = activeIdFromScroll(linkIds);
+      setActive((prev) => (prev === next ? prev : next));
+    };
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+    const onScrollOrResize = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    };
 
-        if (visible?.target?.id) setActive(visible.target.id);
-      },
-      { root: null, threshold: [0.12, 0.22, 0.32], rootMargin: "-20% 0px -60% 0px" },
-    );
-
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
+    tick();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
   }, [sortedLinks]);
 
   function scrollToId(id) {
@@ -49,6 +79,8 @@ export default function Navbar() {
   function onNavClick(e, id) {
     e.preventDefault();
     setMobileOpen(false);
+    setActive(id);
+    ignoreScrollSpyUntilRef.current = Date.now() + 900;
 
     if (transitioning) return;
     setTransitioning(true);

@@ -102,9 +102,6 @@ export default function Skills() {
               <h2 className="text-4xl md:text-5xl font-semibold mt-3 text-white">
                 Skills, explained through usage
               </h2>
-              <p className="mt-4 text-[color:var(--muted)] leading-relaxed text-lg">
-                No ratings. No progress bars. Just the tools I use and how I apply them in real projects.
-              </p>
             </Reveal>
           </div>
 
