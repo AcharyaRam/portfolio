@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import Reveal from "./Reveal";
 import {
   FiCheck,
@@ -8,28 +9,18 @@ import {
   FiMail,
 } from "react-icons/fi";
 
-const WHATSAPP_E164 = "916353457936"; // +91 6353457936
+const EMAILJS_SERVICE_ID = "service_d4sedfq";
+const EMAILJS_TEMPLATE_ID = "template_5akdsm9";
+const EMAILJS_PUBLIC_KEY = "_xlFETBBxSWpnl06d";
+const WHATSAPP_E164 = "916353457936";
 
 export default function Contact() {
   const email = "ramacharya333@gmail.com";
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [error, setError] = useState("");
-
-  const mailtoHref = useMemo(() => {
-    const subject = form.name.trim()
-      ? `Portfolio inquiry from ${form.name.trim()}`
-      : "Portfolio inquiry";
-
-    const body = [
-      `Name: ${form.name.trim() || "-"}`,
-      `Email: ${form.email.trim() || "-"}`,
-      "",
-      form.message.trim() || "-",
-    ].join("\n");
-
-    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [email, form.email, form.message, form.name]);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   async function copyEmail() {
     try {
@@ -42,43 +33,67 @@ export default function Contact() {
   }
 
   function contactFormValidationError() {
-    if (!form.message.trim()) return "Please add a short message.";
+    if (!form.name.trim()) return "Please enter your name.";
     if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
       return "Please enter a valid email address.";
     }
-    if (!form.name.trim()) return "Please enter your name.";
+    if (!form.message.trim()) return "Please add a short message.";
     return null;
   }
 
-  function openEmailWithForm() {
-    setError("");
-    const validationError = contactFormValidationError();
-    if (validationError) {
-      setError(validationError);
-      return;
+  async function sendEmail() {
+    setSending(true);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      setError("Something went wrong. Please try again or contact me directly.");
+    } finally {
+      setSending(false);
     }
-    window.location.href = mailtoHref;
   }
 
-  function submit(e) {
-    e.preventDefault();
-    setError("");
-
-    const validationError = contactFormValidationError();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-
+  function openWhatsApp() {
     const whatsappText = [
       `Name: ${form.name.trim()}`,
       `Email: ${form.email.trim()}`,
       "",
       form.message.trim(),
     ].join("\n");
-
     const whatsappUrl = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(whatsappText)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  }
+
+  async function submitEmail(e) {
+    e.preventDefault();
+    setError("");
+    const validationError = contactFormValidationError();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    await sendEmail();
+  }
+
+  function submitWhatsApp(e) {
+    e.preventDefault();
+    setError("");
+    const validationError = contactFormValidationError();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    openWhatsApp();
   }
 
   return (
@@ -97,8 +112,8 @@ export default function Contact() {
                 MERN & ASP.NET Developer • Available for freelance & full-time work
               </p>
               <p className="mt-4 text-lg text-[color:var(--muted)] leading-relaxed">
-              Looking to hire a Full Stack Developer in Vadodara? I build fast, scalable web applications using React, Node.js, and ASP.NET Core. Feel free to contact me for freelance or full-time opportunities.
-                <span className="text-white/90 font-semibold"></span>.
+                Looking to hire a Full Stack Developer in Vadodara? I build fast,
+                scalable web applications using React, Node.js, and ASP.NET Core.
               </p>
             </Reveal>
           </div>
@@ -118,7 +133,6 @@ export default function Contact() {
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           <Reveal className="lg:col-span-7">
             <form
-              onSubmit={submit}
               className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-7 shadow-2xl"
             >
               <div>
@@ -126,24 +140,28 @@ export default function Contact() {
                   Send a message
                 </p>
                 <p className="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                  Send opens WhatsApp with your details filled in. Prefer email? Use the button on the right.
+                  Send via Email or WhatsApp — whichever you prefer!
                 </p>
               </div>
 
-              {error ? (
+              {error && (
                 <div className="mt-5 rounded-2xl border border-fuchsia-300/30 bg-fuchsia-400/10 p-4 text-sm text-fuchsia-100">
                   {error}
                 </div>
-              ) : null}
+              )}
+
+              {sent && (
+                <div className="mt-5 rounded-2xl border border-green-300/30 bg-green-400/10 p-4 text-sm text-green-100">
+                  ✅ Message sent! I'll get back to you soon.
+                </div>
+              )}
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <label className="block">
                   <span className="text-sm font-semibold text-white/80">Name</span>
                   <input
                     value={form.name}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, name: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     className="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-white/20"
                     placeholder="Your name"
                     autoComplete="name"
@@ -151,14 +169,10 @@ export default function Contact() {
                 </label>
 
                 <label className="block">
-                  <span className="text-sm font-semibold text-white/80">
-                    Email
-                  </span>
+                  <span className="text-sm font-semibold text-white/80">Email</span>
                   <input
                     value={form.email}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, email: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                     className="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-white/20"
                     placeholder="you@example.com"
                     autoComplete="email"
@@ -167,34 +181,32 @@ export default function Contact() {
                 </label>
 
                 <label className="block sm:col-span-2">
-                  <span className="text-sm font-semibold text-white/80">
-                    Message
-                  </span>
+                  <span className="text-sm font-semibold text-white/80">Message</span>
                   <textarea
                     value={form.message}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, message: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     className="mt-2 w-full min-h-[140px] resize-y rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-white/20"
-                    placeholder="Tell me what you’re looking for..."
+                    placeholder="Tell me what you're looking for..."
                   />
                 </label>
               </div>
 
-              <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-between">
+              <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform"
+                  type="button"
+                  onClick={submitEmail}
+                  disabled={sending}
+                  className="inline-flex items-center justify-center rounded-2xl bg-white text-black px-6 py-3 font-semibold shadow-xl hover:shadow-[0_0_32px_rgba(255,255,255,0.18)] hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {sending ? "Sending..." : "📧 Send Email"}
                 </button>
 
                 <button
                   type="button"
-                  onClick={openEmailWithForm}
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10 hover:border-white/25 transition-colors"
+                  onClick={submitWhatsApp}
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-green-500/20 px-6 py-3 font-semibold text-white/90 hover:bg-green-500/30 hover:border-white/25 transition-colors"
                 >
-                  Use email directly
+                  💬 Send on WhatsApp
                 </button>
               </div>
             </form>
@@ -203,10 +215,9 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-4">
             <Reveal>
               <div className="rounded-3xl border border-white/10 bg-glass backdrop-blur-xl p-7 shadow-2xl">
-                <p className="text-sm font-semibold text-white/80">
-                  Direct contacts
-                </p>
+                <p className="text-sm font-semibold text-white/80">Direct contacts</p>
                 <div className="mt-5 grid gap-3">
+
                   <button
                     type="button"
                     onClick={copyEmail}
@@ -216,25 +227,15 @@ export default function Contact() {
                       <div className="flex items-center gap-3">
                         <FiMail size={18} className="text-indigo-300" />
                         <div>
-                          <p className="text-sm font-semibold text-white/90">
-                            Email
-                          </p>
-                          <p className="text-xs text-white/60 break-all">
-                            {email}
-                          </p>
+                          <p className="text-sm font-semibold text-white/90">Email</p>
+                          <p className="text-xs text-white/60 break-all">{email}</p>
                         </div>
                       </div>
                       <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-glass px-3 py-1 text-xs font-semibold text-white/70">
                         {copied ? (
-                          <>
-                            <FiCheck size={14} />
-                            Copied
-                          </>
+                          <><FiCheck size={14} />Copied</>
                         ) : (
-                          <>
-                            <FiCopy size={14} />
-                            Copy
-                          </>
+                          <><FiCopy size={14} />Copy</>
                         )}
                       </span>
                     </div>
@@ -250,17 +251,11 @@ export default function Contact() {
                       <div className="flex items-center gap-3">
                         <FiLinkedin size={18} className="text-indigo-300" />
                         <div>
-                          <p className="text-sm font-semibold text-white/90">
-                            LinkedIn
-                          </p>
-                          <p className="text-xs text-white/60">
-                            Connect & discuss
-                          </p>
+                          <p className="text-sm font-semibold text-white/90">LinkedIn</p>
+                          <p className="text-xs text-white/60">Connect & discuss</p>
                         </div>
                       </div>
-                      <span className="text-xs text-white/60 group-hover:text-white/80 font-semibold">
-                        Open
-                      </span>
+                      <span className="text-xs text-white/60 group-hover:text-white/80 font-semibold">Open</span>
                     </div>
                   </a>
 
@@ -274,19 +269,14 @@ export default function Contact() {
                       <div className="flex items-center gap-3">
                         <FiGithub size={18} className="text-indigo-300" />
                         <div>
-                          <p className="text-sm font-semibold text-white/90">
-                            GitHub
-                          </p>
-                          <p className="text-xs text-white/60">
-                            Repos & code
-                          </p>
+                          <p className="text-sm font-semibold text-white/90">GitHub</p>
+                          <p className="text-xs text-white/60">Repos & code</p>
                         </div>
                       </div>
-                      <span className="text-xs text-white/60 group-hover:text-white/80 font-semibold">
-                        Open
-                      </span>
+                      <span className="text-xs text-white/60 group-hover:text-white/80 font-semibold">Open</span>
                     </div>
                   </a>
+
                 </div>
               </div>
             </Reveal>
